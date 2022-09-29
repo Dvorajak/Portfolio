@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% csrf_token %}
+
+    <div class="nadpis">
+        <h1>Pojistěnci</h1>
+        {{ formset.errors }}
+    </div>
+{% if user.is_authenticated %}
+    {% if user.is_admin %}
+    <br>
+    <br>
+    <a href={% url "vytvor_pojistence" %} class="tvorba"> Nový pojištěnec </a><br>
+    {% else %}
+    <br>
+    <strong>Pro vytvoření, úpravu nebo smazání nemáš dostatečná práva</strong>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th class="jedna">Jméno</th>
+            <th>Bydliště</th>
+            {% if user.is_admin %}
+            <th class="tri"></th>
+            {% endif %}
+        </tr>
+
+    {% for p in pojistenci %}
+        <tr>
+            <td><a href={% url "detail_pojistence" p.id %}> {{p.Jmeno}} {{p.Prijmeni}}</a></td>
+            <td> {{p.ulice }}, {{ p.mesto}}</td>
+            {% if user.is_admin %}
+            <form method="POST">
+            {% csrf_token %}
+            <td><button name="pojistenec_id" value={{p.id}} class="smaz">smazat</button> <button  class="uprav"><a href={% url "uprav_pojistence" p.id %}>upravit</a></button></td>
+
+            </form>
+            {% endif %}
+        </tr>
+    {%endfor%}
+
+{% else %}
+    <br>
+    <strong>Pro vypsání listu musíš být přihlášen </strong>
+{% endif %}
+    </table>
+
+
+{% endblock %}

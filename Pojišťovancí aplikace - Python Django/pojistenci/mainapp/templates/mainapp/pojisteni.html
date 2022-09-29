@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="nadpis">
+<h1>Pojištění</h1>
+</div>
+{% if user.is_authenticated %}
+    {% if user.is_admin %}
+    <br>
+    <br>
+    <a href={% url "vytvor_pojisteni" %} class="tvorba"> Nový typ pojištění </a><br>
+    {% else %}
+    <br>
+    <strong>Pro vytvoření, úpravu nebo smazání nemáš dostatečná práva</strong>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Název</th>
+            <th>Pojištěnec</th>
+        </tr>
+
+    {% for p in pojistky%}
+        <tr>
+            <td><a href={% url "detail_pojisteni" p.id %}>{{p.pojistka}}</a></td>
+            <td><a href={% url "detail_pojistence" p.pojistenec.id %}>{{p.pojistenec}}</a></td>
+        </tr>
+    {%endfor%}
+{% else %}
+    <br>
+    <strong>Pro vypsání listu musíš být přihlášen </strong>
+{% endif %}
+
+    </table>
+
+{% endblock %}

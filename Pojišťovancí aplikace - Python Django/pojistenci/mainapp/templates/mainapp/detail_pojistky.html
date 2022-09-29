@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="nadpis">
+<h1>{{ pojistka }}</h1>
+</div>
+<br>
+<h3>Jméno a přijmení: {{ pojistka.pojistenec }} </h3><br>
+
+<div class="conteiner">
+
+<div class="item1">
+Pojištění: {{ pojistka.pojistka}} <br>
+<br>
+Platnost od: {{ pojistka.platnost_od }}<br>
+<br>
+Částka: {{ pojistka.castka }}Kč <br>
+</div>
+
+<div class="item2">
+Předmět: {{ pojistka.predmet_pojisteni }} <br>
+<br>
+Platnost do: {{ pojistka.platnost_do }} <br>
+</div>
+
+</div>
+<br>
+<form method="POST">
+{% csrf_token %}
+{% if user.is_admin %} 
+<button name="upravit" class="uprav">Upravit pojištění</button> <button name="smazat" class="smaz">Smazat pojištění</button> 
+{% endif %}
+<br>
+</form>
+{% endblock %}

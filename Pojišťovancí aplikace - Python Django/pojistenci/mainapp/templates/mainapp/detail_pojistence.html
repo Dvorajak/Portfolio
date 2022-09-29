@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="nadpis">
+<h1>{{ pojistenec.Jmeno }} {{ pojistenec.Prijmeni }}</h1>
+</div>
+<br>
+<div class="conteiner">
+<div class="item1">
+    ulice: {{ pojistenec.ulice }} <br>
+    <br>
+    město: {{ pojistenec.mesto }} <br>
+    <br>
+    PSČ: {{ pojistenec.PSC }} <br>
+</div>
+<div class="item2">
+    email: {{ pojistenec.email }} <br>
+    <br>
+    tel: {{ pojistenec.tel }} <br>
+</div>
+
+</div>
+<br>
+<br>
+
+
+<h2>Sjednaná pojištění</h2>
+<table>
+    <tr>
+        <th class="jedna">Pojištění</th>
+        <th>Částka</th>
+        {% if user.is_admin %}
+        <th class="tri"></th>
+        {% endif %}
+    </tr>
+{% if user.is_authenticated %}
+{% if list == None %}
+<tr>
+    <td>
+        List je prázdný
+    </td>
+    <td></td>
+    <td></td>
+</tr>
+{% endif %}
+{% for l in list %}
+    <tr>
+        <td><a href={% url "detail_pojisteni" l.id%}> {{l.pojistka}}</a></td>
+        <td> {{l.castka}} Kč</td>
+        {% if user.is_admin %}
+        <form method="POST">
+        {% csrf_token %}
+        <td><button name="pojistka_id" value={{l.id}} class="smaz">smazat</button> <button class="uprav"><a href={% url "uprav_pojisteni" l.id %}>upravit</a></button></td>
+        </form>
+        {% endif %}
+    </tr>
+{%endfor%}
+
+{% else %}
+<br>
+<strong>Pro vypsání listu musíš být přihlášen </strong>
+{% endif %}
+</table>
+
+
+
+
+<form method="POST">
+{% csrf_token %}
+{% if user.is_admin %} 
+<button name="pridat_pojisteni" class="tvorba">Přidat pojištění</button> <button name="upravit" class="uprav">Upravit pojištěnce</button> <button name="smazat" class="smaz">Smazat pojištěnce</button> 
+{% endif %}
+<br>
+</form>
+
+
+{% endblock %}

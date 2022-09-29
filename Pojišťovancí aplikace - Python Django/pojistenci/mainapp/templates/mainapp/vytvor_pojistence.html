@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="nadpis">
+<h1>{{nadpis}} {{pojistenec}}</h1>
+</div>
+<br>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    <div class="conteiner">
+        <div class="item1">
+    {% for field in form %}
+            {% if field.label == "Jméno" %}
+                <strong>{{field.label}}</strong><br>
+                {{field}}
+            {% endif %}
+    {% endfor %}
+        </div>
+
+        <div class="item2">
+            {% for field in form %}
+                    {% if field.label == "Přijmení" %}
+                        <strong>{{field.label}}</strong><br>
+                        {{field}}
+                    {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+    <div class="conteiner">
+    
+        <div class="item1">
+        {% for field in form %}
+            {% if field.label == "Město" or field.label == "Ulice" or field.label == "PSČ" %}
+                {{field.label}}<br>
+                {{field}}<br>
+                <br>
+            {% endif %}
+        {% endfor %}
+        </div>
+    
+        <div class="item2">
+        {% for field in form %}
+            {% if field.label == "Email" or field.label == "Tel" %}
+                {{field.label}}<br>
+                {{field}}<br>
+                <br>
+            {% endif %}
+        {% endfor %}
+        </div>
+    
+    </div>
+
+<button type="submit">Hotovo</button>
+</form>
+{% endblock %}

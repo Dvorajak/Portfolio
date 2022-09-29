@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="nadpis">
+<h1>Nová pojistka</h1>
+</div>
+<br>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit">Vytvořit</button>
+</form>
+{% endblock %}

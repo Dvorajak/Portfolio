@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1 class="nadpis">{{ nadpis }} {{ pojistenec }}</h1>
+<br>
+<br> 
+<form method="POST">
+{% csrf_token %}
+{% for field in form %}
+        {% if field.label == "Pojištěnec" %}
+            {{field.as_hidden}}
+        {% endif %}
+
+        {% if field.label == "Pojištění" %}
+            <strong>{{field.label}}</strong><br>
+            {{field}} <a href={% url "vytvor_pojisteni" %} class="tvorba"> Nový typ pojištění  </a><br><br>
+        {% endif %}
+{% endfor %}
+
+
+<div class="conteiner">
+
+    <div class="item1">
+    {% for field in form %}
+        {% if field.label == "Částka" or field.label == "Předmět pojištění" %}
+            {{field.label}}<br>
+            {{field}}<br>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+    <div class="item2">
+    {% for field in form %}
+        {% if field.label == "Platnost od" or field.label == "Platnost do" %}
+            {{field.label}}<br>
+            {{field}}<br>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+</div>
+<button type="submit">Hotovo</button>
+</form>
+
+{% endblock %}
