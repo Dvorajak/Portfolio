@@ -1,0 +1,16 @@
+D:\Programy\Visual studio projects\Diar\bin\Debug\Diar.exe.config
+D:\Programy\Visual studio projects\Diar\bin\Debug\Diar.exe
+D:\Programy\Visual studio projects\Diar\bin\Debug\Diar.pdb
+D:\Programy\Visual studio projects\Diar\obj\Debug\Diar.csproj.AssemblyReference.cache
+D:\Programy\Visual studio projects\Diar\obj\Debug\Diar.csproj.SuggestedBindingRedirects.cache
+D:\Programy\Visual studio projects\Diar\obj\Debug\Diar.csproj.CoreCompileInputs.cache
+D:\Programy\Visual studio projects\Diar\obj\Debug\Diar.exe
+D:\Programy\Visual studio projects\Diar\obj\Debug\Diar.pdb
+D:\Programy\Visual studio projects\Diáře\Diar\bin\Debug\Diar.exe.config
+D:\Programy\Visual studio projects\Diáře\Diar\bin\Debug\Diar.exe
+D:\Programy\Visual studio projects\Diáře\Diar\bin\Debug\Diar.pdb
+D:\Programy\Visual studio projects\Diáře\Diar\obj\Debug\Diar.csproj.AssemblyReference.cache
+D:\Programy\Visual studio projects\Diáře\Diar\obj\Debug\Diar.csproj.SuggestedBindingRedirects.cache
+D:\Programy\Visual studio projects\Diáře\Diar\obj\Debug\Diar.csproj.CoreCompileInputs.cache
+D:\Programy\Visual studio projects\Diáře\Diar\obj\Debug\Diar.exe
+D:\Programy\Visual studio projects\Diáře\Diar\obj\Debug\Diar.pdb
