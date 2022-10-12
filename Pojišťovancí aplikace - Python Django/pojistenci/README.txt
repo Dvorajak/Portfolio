@@ -24,3 +24,9 @@ Aministrátor:
 email: admin@admin.cz
 heslo: admin
 
+
+Docker:
+
+- Aplikaci lze stáhnout do Dockeru příkazem 'docker pull dvorakj/pojistenci:latest'
+- Aplikaci spustíme příkazem: 'docker run --publish 8000:8000 dvorakj/pojistenci'
+- Aplikace běží pod portem 8000 (http://localhost:8000/)
